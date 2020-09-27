@@ -17,6 +17,16 @@ h1
     font-size: 2em;
 }
 
+p{
+    margin: 10px 0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
 input
 {
     display: block;
@@ -68,5 +78,11 @@ button
     text-align: left;
 
     background: #fff;
+}
+
+.error{
+    border: 2px solid red;
+    border-radius: 3px;
+    padding: 10px;
 }
 
