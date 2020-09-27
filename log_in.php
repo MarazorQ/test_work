@@ -2,21 +2,33 @@
 	
 	session_start();
 
-	$login = 'shuratov2001';
-	$password = $_POST['password'];
+	$login = $_POST['login'];
+	$password =md5($_POST['password']);
 
 	$xml = simplexml_load_file('output.xml');
 
-	foreach ($xml->name as $User) {
+	foreach ($xml as $User) {
+   
+   		$name = $User->login;
+   		$pp = $User->password;
 
-		if($User->name == 'feer'){
+		if (($login == $name) and ($password == $pp)){
 
-			echo "ss";
+			header('Location: register.php');
+			
+
+			
 		}else{
-			echo "e";
+
+			$_SESSION['error'] = 'incorrect login or password';
+			header('Location: autorisetion.php');
 		}
+			
+
 		
 	}
+		
+	
 
 
 ?>
