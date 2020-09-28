@@ -11,10 +11,13 @@
    
    		$name = $User->login;
    		$pp = $User->password;
+   		$firat_name = $User->name;
 
 		if (($login == $name) and ($password == $pp)){
 
-			header('Location: register.php');
+			$_SESSION['user'] = $firat_name;
+			header('Location: welcome.php');
+			
 			
 
 			
