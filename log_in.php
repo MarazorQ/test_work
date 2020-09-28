@@ -15,7 +15,7 @@
 
 		if (($login == $name) and ($password == $pp)){
 
-			$_SESSION['user'] = $firat_name;
+			$_SESSION['user'] = $login;
 			header('Location: welcome.php');
 			
 			

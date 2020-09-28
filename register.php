@@ -1,5 +1,8 @@
 <?php 
 	session_start();
+	if ($_SESSION['user']){
+		header('Location: welcome.php');
+	}
 ?>
 
 <!DOCTYPE html>
