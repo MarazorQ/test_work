@@ -10,7 +10,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title> Registretion</title>
-	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 	<form action="create_ac.php" class="profile" method="POST">
@@ -39,15 +39,18 @@
 			<button>CREATE</button>
 			<p>Alredy have an account?-<a href="autorisetion.php">log in</a></p>
 			
-				<?php 
+				<!--<?php 
 					if ($_SESSION['error']){
 						echo '<p class="error">' . $_SESSION['error'] . '</p>' ;
 					}
 					
   					unset($_SESSION['error']);	
 				?>
+			-->
 		</div>
+		<p class="error">dfdff</p>
 	</form>
-	<script type="text/javascript" src="validation.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

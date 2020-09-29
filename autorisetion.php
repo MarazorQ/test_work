@@ -11,7 +11,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title> Autorisetion</title>
-	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 	<form  class="profile">
@@ -37,11 +37,11 @@
   					unset($_SESSION['error']);	
 				?>
 			-->
-			<p class="error"> ddff</p>
+			<p class="msg none"> ddff</p>
 				
 	</form>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="main.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

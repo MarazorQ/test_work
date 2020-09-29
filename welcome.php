@@ -10,7 +10,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title> Welcome</title>
-	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 	<form >
