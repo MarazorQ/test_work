@@ -36,7 +36,7 @@
 			<input type="text" name="first_name" placeholder="input your name">
 		</div>
 		<div class="item">
-			<button>CREATE</button>
+			<button type="submit" class="register-btn">CREATE</button>
 			<p>Alredy have an account?-<a href="autorisetion.php">log in</a></p>
 			
 				<!--<?php 
@@ -48,7 +48,7 @@
 				?>
 			-->
 		</div>
-		<p class="error">dfdff</p>
+		<p class="msg none">dfdff</p>
 	</form>
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="js/main.js"></script>

@@ -52,8 +52,8 @@ if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $error_fields[] = 'email';
 }
 
-if ($password_confirm === '') {
-    $error_fields[] = 'password_confirm';
+if ($confirm_password === '') {
+    $error_fields[] = 'confirm_password';
 }
 
 if (!empty($error_fields)) {

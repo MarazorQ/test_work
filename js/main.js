@@ -11,7 +11,7 @@ $('.btn').click(function (e) {
         password = $('input[name="password"]').val();
 
     $.ajax({
-        url: 'log_in.php',
+        url: './log_in.php',
         type: 'POST',
         dataType: 'json',
         data: {
@@ -21,7 +21,7 @@ $('.btn').click(function (e) {
         success (data) {
 
             if (data.status) {
-                document.location.href = 'welcome.php';
+                document.location.href = './welcome.php';
             } else {
 
                 if (data.type === 1) {
@@ -51,21 +51,23 @@ $('.register-btn').click(function (e) {
 
     let login = $('input[name="login"]').val(),
         password = $('input[name="password"]').val(),
-        full_name = $('input[name="full_name"]').val(),
+        confirm_password = $('input[name="confirm_password"]').val(),
         email = $('input[name="email"]').val(),
-        password_confirm = $('input[name="password_confirm"]').val();
+        first_name = $('input[name="first_name"]').val();
+        
 
     let formData = new FormData();
     formData.append('login', login);
     formData.append('password', password);
-    formData.append('password_confirm', password_confirm);
-    formData.append('full_name', full_name);
+    formData.append('confirm_password', confirm_password);
     formData.append('email', email);
+    formData.append('first_name', first_name);
+    
     
 
 
     $.ajax({
-        url: 'create_ac.php',
+        url: './create_ac.php',
         type: 'POST',
         dataType: 'json',
         processData: false,
@@ -75,7 +77,7 @@ $('.register-btn').click(function (e) {
         success (data) {
 
             if (data.status) {
-                document.location.href = 'autorisetion.php';
+                document.location.href = './autorisetion.php';
             } else {
 
                 if (data.type === 1) {

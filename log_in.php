@@ -50,7 +50,7 @@
     ];
 
    		    echo json_encode($response);
-			header('Location: welcome.php');
+			//header('Location: welcome.php');
 			
 			
 
