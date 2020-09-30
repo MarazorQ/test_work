@@ -2,6 +2,8 @@
 
 session_start();
 
+include_once 'class_crud.php';
+
 
 $login = $_POST['login'];
 $password = $_POST['password'];
