@@ -21,7 +21,7 @@
 
 		public function read($login,$password){
 
-			$xml = simplexml_load_file('db/output.xml');
+			$xml = simplexml_load_file('../db/output.xml');
 
 			foreach ($xml as $User) {
 		   
@@ -56,7 +56,7 @@
 
 		public function update($login,$password,$email,$first_name){
 
-	 		$xml = simplexml_load_file('db/output.xml');
+	 		$xml = simplexml_load_file('../db/output.xml');
 
 			//Добавим новый узел в имеющийся XML
 			$newchild = $xml->addChild("User");
@@ -67,7 +67,7 @@
 			$newchild->addChild("password", $password);
 			$newchild->addChild("email", $email);
 			$newchild->addChild("name", $first_name);
-			file_put_contents('db/output.xml', $xml->asXML());
+			file_put_contents('../db/output.xml', $xml->asXML());
 
 		}
 
@@ -76,7 +76,7 @@
 		public function checkInDBLogin($login){
 
 
-			$xml = simplexml_load_file('db/output.xml');
+			$xml = simplexml_load_file('../db/output.xml');
 
 			foreach ($xml as $User) {
 			   

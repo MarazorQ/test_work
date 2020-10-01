@@ -15,7 +15,7 @@
 <body>
 	<form >
 		<h2>Hello <?= $_SESSION['user']?></h2>
-		<a href="exit.php" class="exit"> Exit</a>
+		<a href="scripts/exit.php" class="exit"> Exit</a>
 	</form>
 </body>
 </html>

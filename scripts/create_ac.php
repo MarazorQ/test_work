@@ -3,8 +3,8 @@
 session_start();
 
 
-include_once 'class/class__crud.php';
-include_once 'class/class__reg.php';
+include_once '../class/class__crud.php';
+include_once '../class/class__reg.php';
 
 
 $login = $_POST['login'];
