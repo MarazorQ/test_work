@@ -2,7 +2,8 @@
 
 session_start();
 
-include_once 'class_crud.php';
+
+include_once 'class/class__crud.php';
 
 
 $login = $_POST['login'];
@@ -35,6 +36,10 @@ foreach ($xml as $User) {
 		}
 			
 	}
+
+
+//$acc = new CRUD();
+//$acc-> checkInDBLogin($login);
 
 $error_fields = [];
 
@@ -76,36 +81,21 @@ if (!empty($error_fields)) {
 
 if ($password===$confirm_password){
 
-	//Создание бд и таблицы
-/*
-		$xml = new XMLWriter(); //создаем новый экземпляр класса XMLWriter
-		$xml->openUri('file:/output.xml');
-		$xml->startDocument('1.0', 'utf-8');
-		$xml->startElement("User"); //создание корневого узла
-		$xml->writeElement("id", "1");
-		$xml->writeElement("login", $login); //запись элемента
-		$xml->writeElement("password", $password);
-		$xml->writeElement("email", $email);
-		$xml->writeElement("name", $first_name);
-		$xml->endElement(); //закрытие корневого элемента
-		echo $xml->outputMemory(); //завершение записи в XML
-		*/
 		$password = md5($password);
-
  		$xml = simplexml_load_file('db/output.xml');
-	
-
 		//Добавим новый узел в имеющийся XML
 		$newchild = $xml->addChild("User");
 		//Добавление параметров записи
-		
 		$newchild->addChild("id", "1");
 		$newchild->addChild("login", $login);
 		$newchild->addChild("password", $password);
 		$newchild->addChild("email", $email);
 		$newchild->addChild("name", $first_name);
 		file_put_contents('db/output.xml', $xml->asXML());
-		
+
+		//$acc = new CRUD();
+		//$acc->update($login,$password,$email,$first_name);
+
 		 $response = [
         "status" => true,
         "message" => "Registretion was successful!",
