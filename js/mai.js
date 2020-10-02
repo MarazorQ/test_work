@@ -19,20 +19,16 @@ $('.btn').click(function (e) {
             password: password
         },
         success (data) {
-
             if (data.status) {
                 document.location.href = './welcome.php';
             } else {
-
                 if (data.type === 1) {
                     data.fields.forEach(function (field) {
                         $(`input[name="${field}"]`).addClass('error');
                     });
                 }
-
                 $('.msg').removeClass('none').text(data.message);
             }
-
         }
     });
 
@@ -69,22 +65,16 @@ $('.register-btn').click(function (e) {
         cache: false,
         data: formData,
         success (data) {
-
             if (data.status) {
                 document.location.href = './autorisetion.php';
             } else {
-
                 if (data.type === 1) {
                     data.fields.forEach(function (field) {
                         $(`input[name="${field}"]`).addClass('error');
                     });
                 }
-
                 $('.msg').removeClass('none').text(data.message);
-
             }
-
         }
     });
-
 });

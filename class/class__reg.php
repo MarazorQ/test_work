@@ -12,7 +12,6 @@
 		private $error_fields = [];
 
 		function __construct($login,$password,$confirm_password,$email,$first_name){
-
 			$this->email_class = htmlspecialchars($email);
 			$this->login_class = htmlspecialchars($login);
 			$this->password_class = htmlspecialchars($password);
@@ -22,36 +21,28 @@
 		}
 
 		public function create_accaunt(){
-
 			$acc = new CRUD();
 			$acc-> checkInDBLogin($login_class);
 			$this->checkForm();
 			$this->checkPassword();
-			
 		}
 
 		public function checkForm(){
-
 			if ($login_class === '') {
 			    $error_fields[] = 'login';
 			}
-
 			if ($password_class === '') {
 			    $error_fields[] = 'password';
 			}
-
 			if ($first_name_class === '') {
 			    $error_fields[] = 'full_name';
 			}
-
 			if ($email_class=== '' ) {
 			    $error_fields[] = 'email';
 			}
-
 			if ($confirm_password_class === '') {
 			    $error_fields[] = 'confirm_password';
 			}
-
 			if (!empty($error_fields)) {
 			    $response = [
 			        "status" => false,
@@ -59,20 +50,16 @@
 			        "message" => "Chektrue form",
 			        "fields" => $error_fields
 			   				 ];
-
 			    echo json_encode($response);
-
 			    die();
 			}
 
 		}
 
 		public function checkPassword(){
-
 			$acc1 = new CRUD();
 
 			if ($password_class === $confirm_password_class){
-				
 				$password_class = md5($password_class);
 				$acc1->update($login_class,$password_class,$email_class,$first_name_class);
 
@@ -81,18 +68,14 @@
 			        "message" => "Registretion was successful!",
 			    			 ];
 			    echo json_encode($response);
-
 			}else{
-
 				$response = [
 			        "status" => false,
 			        "message" => "password != password_confirm",
 			    			];
 			    echo json_encode($response);
 			}
-
 		}
-
 	}
 
 ?>
