@@ -38,8 +38,6 @@ $('.btn').click(function (e) {
 
 });
 
-
-
 /*
     Регистрация
  */
@@ -54,7 +52,6 @@ $('.register-btn').click(function (e) {
         confirm_password = $('input[name="confirm_password"]').val(),
         email = $('input[name="email"]').val(),
         first_name = $('input[name="first_name"]').val();
-        
 
     let formData = new FormData();
     formData.append('login', login);
@@ -63,9 +60,6 @@ $('.register-btn').click(function (e) {
     formData.append('email', email);
     formData.append('first_name', first_name);
     
-    
-
-
     $.ajax({
         url: 'scripts/create_ac.php',
         type: 'POST',

@@ -2,7 +2,6 @@
 	
 	include_once 'class__crud.php';
 
-
 	class Register{
 
 		public  $login_class;
@@ -11,8 +10,6 @@
 		public  $email_class;
 		public  $first_name_class;
 		private $error_fields = [];
-
-
 
 		function __construct($login,$password,$confirm_password,$email,$first_name){
 
@@ -33,9 +30,7 @@
 			
 		}
 
-
 		public function checkForm(){
-
 
 			if ($login_class === '') {
 			    $error_fields[] = 'login';
@@ -63,7 +58,7 @@
 			        "type" => 1,
 			        "message" => "Chektrue form",
 			        "fields" => $error_fields
-			    ];
+			   				 ];
 
 			    echo json_encode($response);
 
@@ -75,14 +70,16 @@
 		public function checkPassword(){
 
 			$acc1 = new CRUD();
+
 			if ($password_class === $confirm_password_class){
+				
 				$password_class = md5($password_class);
 				$acc1->update($login_class,$password_class,$email_class,$first_name_class);
 
 				 $response = [
 			        "status" => true,
 			        "message" => "Registretion was successful!",
-			    ];
+			    			 ];
 			    echo json_encode($response);
 
 			}else{
@@ -90,10 +87,9 @@
 				$response = [
 			        "status" => false,
 			        "message" => "password != password_confirm",
-			    ];
+			    			];
 			    echo json_encode($response);
 			}
-
 
 		}
 

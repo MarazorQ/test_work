@@ -34,17 +34,16 @@
 					$_SESSION['user'] = $login;
 
 					$response = [
-		       		 "status" => true
+		       			 "status" => true
 		    					];
 
 		   		    echo json_encode($response);
-					//header('Location: welcome.php');
 					
 				}else{
 
 		    		$response = [
-		       		 "status" => false,
-		        		"message" => 'Не верный логин или пароль'
+			       		 "status" => false,
+			        	"message" => 'Не верный логин или пароль'
 		   						 ];
 
 		    		echo json_encode($response);
@@ -61,7 +60,6 @@
 			//Добавим новый узел в имеющийся XML
 			$newchild = $xml->addChild("User");
 			//Добавление параметров записи
-			
 			$newchild->addChild("id", "1");
 			$newchild->addChild("login", $login);
 			$newchild->addChild("password", $password);
@@ -71,10 +69,7 @@
 
 		}
 
-		
-
 		public function checkInDBLogin($login){
-
 
 			$xml = simplexml_load_file('../db/output.xml');
 
@@ -85,11 +80,11 @@
 					if ($login == $name){
 
 						$response = [
-			        "status" => false,
-			        "type" => 1,
-			        "message" => "That login is alredy regist",
-			        "fields" => ['login']
-			    ];
+					        "status" => false,
+					        "type" => 1,
+					        "message" => "That login is alredy regist",
+					        "fields" => ['login']
+			   						 ];
 
 			    echo json_encode($response);
 			    die();
