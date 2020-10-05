@@ -18,7 +18,7 @@ $error_fields = [];
 
 if ($login === '') {
     $error_fields[] = 'login';
-}ы
+}
 if ($password === '') {
     $error_fields[] = 'password';
 }
