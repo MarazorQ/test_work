@@ -23,7 +23,7 @@ if ($password === '') {
     $error_fields[] = 'password';
 }
 if ($first_name === '') {
-    $error_fields[] = 'full_name';
+    $error_fields[] = 'first_name';
 }
 if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $error_fields[] = 'email';
@@ -41,6 +41,8 @@ if (!empty($error_fields)) {
     echo json_encode($response);
     die();
 }
+
+
 if ($password===$confirm_password){
 		$password = md5($password);
 		$acc->update($login,$password,$email,$first_name);

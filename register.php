@@ -38,15 +38,6 @@
 		<div class="item">
 			<button type="submit" class="register-btn">CREATE</button>
 			<p>Alredy have an account?-<a href="autorisetion.php">log in</a></p>
-			
-				<!--<?php 
-					if ($_SESSION['error']){
-						echo '<p class="error">' . $_SESSION['error'] . '</p>' ;
-					}
-					
-  					unset($_SESSION['error']);	
-				?>
-			-->
 		</div>
 		<p class="msg none">dfdff</p>
 	</form>

@@ -2,6 +2,7 @@
     Авторизация
  */
 
+
 $('.btn').click(function (e) {
     e.preventDefault();
 
@@ -9,7 +10,7 @@ $('.btn').click(function (e) {
 
     let login = $('input[name="login"]').val(),
         password = $('input[name="password"]').val();
-
+  
     $.ajax({
         url: 'scripts/log_in.php',
         type: 'POST',
@@ -21,7 +22,7 @@ $('.btn').click(function (e) {
         success (data) {
             if (data.status) {
                 document.location.href = './welcome.php';
-            } else {
+            }else {
                 if (data.type === 1) {
                     data.fields.forEach(function (field) {
                         $(`input[name="${field}"]`).addClass('error');
