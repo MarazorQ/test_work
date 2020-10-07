@@ -57,7 +57,7 @@
 			file_put_contents('../db/file.xml', $xml->asXML());
 		}
 
-		public function checkInDBLogin($login){
+		public function check_in_db_login($login){
 			$xml = simplexml_load_file('../db/file.xml');
 
 			foreach ($xml as $User) {

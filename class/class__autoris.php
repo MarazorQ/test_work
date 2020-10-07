@@ -7,14 +7,14 @@
 		public $error_fields = [];
 		
 		public function signin($login,$password){
-			$this->checkForm($login,$password);
+			$this->check_form($login,$password);
 			
 			$password = md5($password);
 			$user = new CRUD();
 			$user->read($login,$password);
 		}
 
-		public function checkForm($login,$password){
+		public function check_form($login,$password){
 			if ($login === '') {
 			    $error_fields[] = 'login';
 			}

@@ -5,16 +5,16 @@
 	class Register{
 
 		public function create_accaunt($login,$password,$confirm_password,$email,$first_name){
-			$this->checkForm($login,$password,$confirm_password,$email,$first_name);
+			$this->check_form($login,$password,$confirm_password,$email,$first_name);
 			$checkInDB = new CRUD();
-			$checkInDB-> checkInDBLogin($login);
-			$this->checkPassword($login,$password,$confirm_password,$email,$first_name);
+			$checkInDB-> check_in_db_login($login);
+			$this->check_password($login,$password,$confirm_password,$email,$first_name);
 		}
 
-		public function checkForm($login,$password,$confirm_password,$email,$first_name){
+		public function check_form($login,$password,$confirm_password,$email,$first_name){
 			$valid_login = "/^[a-z0-9]{6,12}$/i";
 			$valid_name = "/^[a-z0-9]{2,12}$/i";
-			$valid_password = "/^[a-z0-9-_]{6,12}$/i";
+			$valid_password = "/^[a-z0-9-_]{6,12}$/i";// p.s. в тз написано: использовать "спец символы". Не понял какие именно, поэтому выбрад "-" и "_"))
 			$error_fields = [];
 
             if (empty($login)){
@@ -70,7 +70,7 @@
 
 		}
 
-		public function checkPassword($login,$password,$confirm_password,$email,$first_name){
+		public function check_password($login,$password,$confirm_password,$email,$first_name){
 			$acc1 = new CRUD();
 
 			if ($password === $confirm_password){
