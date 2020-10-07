@@ -9,62 +9,94 @@
 		public  $confirm_password_class;
 		public  $email_class;
 		public  $first_name_class;
-		public $error_fields = [];
-
-		function __construct($login,$password,$confirm_password,$email,$first_name){
-			$this->email_class = htmlspecialchars($email);
-			$this->login_class = htmlspecialchars($login);
-			$this->password_class = htmlspecialchars($password);
-			$this->confirm_password_class = htmlspecialchars($confirm_password);
-			$this->first_name_class = htmlspecialchars($first_name);
+		public 	$error_fields = [];
+		public 	$acc;
+/*
+		function __construct(){
+			$this->minLenghtLogin = 6;
+			$this->minLenghtName = 2;
+			$this->minLenghtPassword = 6;
+			$this->maxLenghtLogin = 12;
+			$this->maxLenghtName = 12;
+			$this->maxLenghtPassword = 15;
 
 		}
+		*/
 
-		public function create_accaunt(){
+		public function create_accaunt($login,$password,$confirm_password,$email,$first_name){
+			
+			$this->checkForm($login,$password,$confirm_password,$email,$first_name);
 			$acc = new CRUD();
-			$acc-> checkInDBLogin($login_class);
-			$this->checkForm();
-			$this->checkPassword();
+			$acc-> checkInDBLogin($login);
+			$this->checkPassword($login,$password,$confirm_password,$email,$first_name);
 		}
 
-		public function checkForm(){
-			if ($login_class === '') {
-			    $error_fields[] = 'login';
+		public function checkForm($login,$password,$confirm_password,$email,$first_name){
+			$valid_login = "/^[a-z0-9]{6,12}$/i";
+			$valid_name = "/^[a-z0-9]{2,12}$/i";
+			$valid_password = "/^[a-z0-9-_]{6,12}$/i";
+			$error_fields = [];
+
+            if (empty($login)){
+            	$error_fields[] = 'login';
+            }else{
+            	if (preg_match($valid_login, $login)){
+            	 }else{
+            	 	$error_fields[] = 'login';
+            	 	}
+            }
+
+			if (empty($password)){
+				$error_fields[] = 'password';
+			}else{
+				if (preg_match($valid_password, $password)){
+				}else{
+					$error_fields[] = 'password';
+					}
 			}
-			if ($password_class === '') {
-			    $error_fields[] = 'password';
-			}
-			if ($first_name_class === '') {
-			    $error_fields[] = 'full_name';
-			}
-			if ($email_class=== '' ) {
+
+			if (empty($first_name)){
+            	 $error_fields[] = 'first_name';
+            }else{
+            	 if (preg_match($valid_name, $first_name)){
+            	 }else{
+            	 	$error_fields[] = 'first_name';
+            	 	}
+            }
+
+
+			if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			    $error_fields[] = 'email';
 			}
-			if ($confirm_password_class === '') {
-			    $error_fields[] = 'confirm_password';
+
+    		if (empty($confirm_password)){
+				$error_fields[] = 'confirm_password';
+			}else{
+				if (preg_match($valid_password, $confirm_password)){
+				}else{
+					$error_fields[] = 'confirm_password';
+					}
 			}
+
 			if (!empty($error_fields)) {
 			    $response = [
 			        "status" => false,
 			        "type" => 1,
 			        "message" => "Chektrue form",
 			        "fields" => $error_fields
-			   				 ];
+			    ];
 			    echo json_encode($response);
 			    die();
 			}
 
 		}
 
-
-
-
-		public function checkPassword(){
+		public function checkPassword($login,$password,$confirm_password,$email,$first_name){
 			$acc1 = new CRUD();
 
-			if ($password_class === $confirm_password_class){
-				$password_class = md5($password_class);
-				$acc1->update($login_class,$password_class,$email_class,$first_name_class);
+			if ($password === $confirm_password){
+				$password = md5($password);
+				$acc1->update($login,$password,$email,$first_name);
 
 				 $response = [
 			        "status" => true,
