@@ -4,30 +4,10 @@
 
 	class Register{
 
-		public  $login_class;
-		public  $password_class;
-		public  $confirm_password_class;
-		public  $email_class;
-		public  $first_name_class;
-		public 	$error_fields = [];
-		public 	$acc;
-/*
-		function __construct(){
-			$this->minLenghtLogin = 6;
-			$this->minLenghtName = 2;
-			$this->minLenghtPassword = 6;
-			$this->maxLenghtLogin = 12;
-			$this->maxLenghtName = 12;
-			$this->maxLenghtPassword = 15;
-
-		}
-		*/
-
 		public function create_accaunt($login,$password,$confirm_password,$email,$first_name){
-			
 			$this->checkForm($login,$password,$confirm_password,$email,$first_name);
-			$acc = new CRUD();
-			$acc-> checkInDBLogin($login);
+			$checkInDB = new CRUD();
+			$checkInDB-> checkInDBLogin($login);
 			$this->checkPassword($login,$password,$confirm_password,$email,$first_name);
 		}
 
@@ -63,7 +43,6 @@
             	 	$error_fields[] = 'first_name';
             	 	}
             }
-
 
 			if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			    $error_fields[] = 'email';

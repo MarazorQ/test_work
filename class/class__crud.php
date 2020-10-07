@@ -5,7 +5,7 @@
 		public function create($login,$password,$email,$first_name){
 			//Создание бд и таблицы
 			$xml = new XMLWriter(); //создаем новый экземпляр класса XMLWriter
-			$xml->openUri('file:../db/output.xml');
+			$xml->openUri('file:../db/file.xml');
 			$xml->startDocument('1.0', 'utf-8');
 			$xml->startElement("User"); //создание корневого узла
 			$xml->writeElement("id", "1");
@@ -74,8 +74,6 @@
 			    die();
 					}	
 				}
-				
-
 		}
 	}
 ?>

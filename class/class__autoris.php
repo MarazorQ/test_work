@@ -4,7 +4,7 @@
 
 	class Authorization{
 
-		public $error_fields=[];
+		public $error_fields = [];
 		
 		public function signin($login,$password){
 			$this->checkForm($login,$password);
