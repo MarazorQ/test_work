@@ -21,7 +21,6 @@
 			if ($password === '') {
 			    $error_fields[] = 'password';
 			}
-
 			if (!empty($error_fields)) {
 			    $response = [
 			        "status" => false,

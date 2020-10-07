@@ -2,6 +2,6 @@
 
 	session_start();
 	unset($_SESSION['user']);
-	header('Location: ../autorisetion.php');
+	header('Location: ../index.php');
 	
 ?>

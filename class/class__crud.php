@@ -5,7 +5,7 @@
 		public function create($login,$password,$email,$first_name){
 			//Создание бд и таблицы
 			$xml = new XMLWriter(); //создаем новый экземпляр класса XMLWriter
-			$xml->openUri('file:db/output.xml');
+			$xml->openUri('file:../db/output.xml');
 			$xml->startDocument('1.0', 'utf-8');
 			$xml->startElement("User"); //создание корневого узла
 			$xml->writeElement("id", "1");
@@ -18,16 +18,19 @@
 		}
 
 		public function read($login,$password){
-			$xml = simplexml_load_file('../db/output.xml');
+			$xml = simplexml_load_file('../db/file.xml');
 
 			foreach ($xml as $User) {
 		   		$name = $User->login;
 		   		$pp = $User->password;
-		   		$firat_name = $User->name;
 
 				if (($login == $name) and ($password == $pp)){
+		   		    break;
+				}	
+			}
+			if (($login == $name) and ($password == $pp)){
 					$_SESSION['user'] = $login;
-
+			
 					$response = [
 		       			 "status" => true
 		    					];
@@ -35,15 +38,14 @@
 				}else{
 		    		$response = [
 			       		 "status" => false,
-			        	"message" => 'Не верный логин или пароль'
+			        	"message" => 'Wrong login or password'
 		   						 ];
 		    		echo json_encode($response);
 				}		
-			}
 		}
 
 		public function update($login,$password,$email,$first_name){
-	 		$xml = simplexml_load_file('../db/output.xml');
+	 		$xml = simplexml_load_file('../db/file.xml');
 			//Добавим новый узел в имеющийся XML
 			$newchild = $xml->addChild("User");
 			//Добавление параметров записи
@@ -52,11 +54,11 @@
 			$newchild->addChild("password", $password);
 			$newchild->addChild("email", $email);
 			$newchild->addChild("name", $first_name);
-			file_put_contents('../db/output.xml', $xml->asXML());
+			file_put_contents('../db/file.xml', $xml->asXML());
 		}
 
 		public function checkInDBLogin($login){
-			$xml = simplexml_load_file('../db/output.xml');
+			$xml = simplexml_load_file('../db/file.xml');
 
 			foreach ($xml as $User) {
 			   		$name = $User->login;

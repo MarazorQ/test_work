@@ -20,7 +20,7 @@ $('.btn').click(function (e) {
             password: password
         },
         success (data) {
-            if (data.status) {
+            if (data.status ) {
                 document.location.href = './welcome.php';
             }else {
                 if (data.type === 1) {
@@ -67,7 +67,7 @@ $('.register-btn').click(function (e) {
         data: formData,
         success (data) {
             if (data.status) {
-                document.location.href = './autorisetion.php';
+                document.location.href = './index.php';
             } else {
                 if (data.type === 1) {
                     data.fields.forEach(function (field) {

@@ -37,7 +37,7 @@
 		</div>
 		<div class="item">
 			<button type="submit" class="register-btn">CREATE</button>
-			<p>Alredy have an account?-<a href="autorisetion.php">log in</a></p>
+			<p>Alredy have an account?-<a href="index.php">log in</a></p>
 		</div>
 		<p class="msg none">dfdff</p>
 	</form>

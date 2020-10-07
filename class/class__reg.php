@@ -9,7 +9,7 @@
 		public  $confirm_password_class;
 		public  $email_class;
 		public  $first_name_class;
-		private $error_fields = [];
+		public $error_fields = [];
 
 		function __construct($login,$password,$confirm_password,$email,$first_name){
 			$this->email_class = htmlspecialchars($email);
@@ -55,6 +55,9 @@
 			}
 
 		}
+
+
+
 
 		public function checkPassword(){
 			$acc1 = new CRUD();
