@@ -14,49 +14,33 @@
 		public function check_form($login,$password,$confirm_password,$email,$first_name){
 			$valid_login = "/^[a-z0-9]{6,12}$/i";
 			$valid_name = "/^[a-z0-9]{2,12}$/i";
-			$valid_password = "/^[a-z0-9-_]{6,12}$/i";// p.s. в тз написано: использовать "спец символы". Не понял какие именно, поэтому выбрад "-" и "_"))
+			$valid_password = "/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,15}$/i";  //?=.*[0-9]- хотя бы одно число; ?=.*[!@#$%^&*]- хотя бы один спец символ ; ?=.*[a-z]- хотя бы одну маленькую букву; ?=.*[A-Z]- хотя бы одну большую; [0-9a-zA-Z!@#$%^&*]{6,15} - строка должна состоять не менее, чем из 6 упомянутых символов
 			$error_fields = [];
 
-            if (empty($login)){
-            	$error_fields[] = 'login';
-            }else{
-            	if (preg_match($valid_login, $login)){
-            	 }else{
+            if (preg_match($valid_login, $login)){
+            	}else{
             	 	$error_fields[] = 'login';
             	 	}
-            }
-
-			if (empty($password)){
-				$error_fields[] = 'password';
-			}else{
-				if (preg_match($valid_password, $password)){
+            
+			if (preg_match($valid_password, $password)){
 				}else{
 					$error_fields[] = 'password';
 					}
-			}
-
-			if (empty($first_name)){
-            	 $error_fields[] = 'first_name';
-            }else{
-            	 if (preg_match($valid_name, $first_name)){
-            	 }else{
+			
+            if (preg_match($valid_name, $first_name)){
+            	}else{
             	 	$error_fields[] = 'first_name';
             	 	}
-            }
-
+            
 			if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			    $error_fields[] = 'email';
 			}
 
-    		if (empty($confirm_password)){
-				$error_fields[] = 'confirm_password';
-			}else{
-				if (preg_match($valid_password, $confirm_password)){
+			if (preg_match($valid_password, $confirm_password)){
 				}else{
 					$error_fields[] = 'confirm_password';
 					}
-			}
-
+			
 			if (!empty($error_fields)) {
 			    $response = [
 			        "status" => false,
@@ -67,7 +51,6 @@
 			    echo json_encode($response);
 			    die();
 			}
-
 		}
 
 		public function check_password($login,$password,$confirm_password,$email,$first_name){
